@@ -28,8 +28,15 @@ class UsersController extends BaseController {
 	public function updateProfile($id)
 	{
 		$user = User::find($id);
+		return View::make('users.updateProfile')->with('user', $user);
+	}
+
+	public function createProfile()
+	{
+
 		return View::make('users.updateProfile');
 	}
+
 	public function profile($id)
 	{
 		$user = User::find($id);

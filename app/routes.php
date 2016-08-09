@@ -62,6 +62,8 @@ Route::post('storeNote', array('uses' => 'UsersController@storeNote', 'as' => 's
 
 
 Route::get('updateProfile/{id}', 'UsersController@updateProfile');
+Route::get('createProfile/{id}', 'UsersController@createProfile');
+
 Route::post('updateProfile',array( 'uses' => 'UsersController@storeProfile', 'as' => 'storeProfile'));
 Route::get('profile/{id}', array('uses' => 'UsersController@profile', 'as' => 'profile'));
 
