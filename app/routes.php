@@ -84,7 +84,7 @@ Route::get('meetingDetails', array('uses' => 'UsersController@viewMeetingNotes',
 
 Route::get('retrieve', 'UsersController@retrieve');
 Route::post('fileUser', array('uses' => 'UsersController@fileUser', 'as' => 'fileUser'));
-Route::get('upload', 'UsersController@upload');
+Route::get('upload/{id}', 'UsersController@upload');
 Route::post('uploadFile', array('uses' => 'UsersController@uploadFile', 'as' => 'uploadFile'));
 
 

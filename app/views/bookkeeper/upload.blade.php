@@ -22,10 +22,9 @@
                                 </div>
                             @endforeach
 
-                            <input type="hidden" name="client_id" value="{{$client->id}}">
+
                             <div class="form-group input-group">
-                                <label for="name" class="sr-only">Client Name</label>
-                                <input type="text" value="{{$client->user->first_name}}" class="form-control" disabled>
+                                <input type="hidden" name="client_id" value="{{$client->id}}">
                             </div>
                             <div class="form-group input-group">
                                 <label for="name" class="sr-only">File Name</label>
