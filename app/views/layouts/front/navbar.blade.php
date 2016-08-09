@@ -127,16 +127,11 @@
                     </li>
                     @if(Auth::check() && (Auth::user()->isclient()))
                     <li>
-                        <a href="#" class="dropdown dropdown-toggle" data-toggle="dropdown"><i class="fa fa-fw fa-arrows-v"></i> Meetings <i class="fa fa-fw fa-caret-down"></i></a>
-                        <ul class="dropdown-menu dropdown-menu-right">
-                            <li>
-                                <a href="{{('request')}}"> Meeting Requests </a>
-                            </li>
-                            
-                        </ul>
+                        <a href="{{('request')}}" class="dropdown dropdown-toggle" data-toggle="dropdown"><i class="fa fa-fw fa-arrows-v"></i> Meeting Request <i class="fa fa-fw fa-caret-down"></i></a>
+
                     </li>
                     @endif
-                   
+
                                   @if(Auth::check() && (Auth::user()->isAdmin()))
                         <li>
                             <a href="#" class="dropdown dropdown-toggle" data-toggle="dropdown"><i class="fa fa-fw fa-arrows-v"></i> Meetings <i class="fa fa-fw fa-caret-down"></i></a>
