@@ -59,7 +59,7 @@
                                 <div class="form-group">
                                     <label>Admin Role</label>
                                     <select  class="form-control" name="roles_id">
-                                        <option name="roles_id" value="1">Admin</option>
+                                        <option name="roles_id" value="4">Client</option>
                                         <option name="roles_id" value="2">CRM</option>
                                         <option name="roles_id" value="3">Book keeper</option>
                                     </select>

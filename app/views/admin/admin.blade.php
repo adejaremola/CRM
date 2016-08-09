@@ -58,7 +58,7 @@
                                     </div>
                                     <div class="col-xs-9 text-right">
                                         <div class="huge">{{Meeting::where('accepted', '=', 1)->get()->count()}}</div>
-                                        <div>New Tasks!</div>
+                                        <div>Accepted Meetings!</div>
                                     </div>
                                 </div>
                             </div>
@@ -125,11 +125,13 @@
                     <div class="col-lg-4">
                         <div class="panel panel-default">
                             <div class="panel-heading">
-                                <h3 class="panel-title"><i class="fa fa-long-arrow-right fa-fw"></i> Donut Chart</h3>
+                                <h3 class="panel-title"><i class="fa fa-long-arrow-right fa-fw"></i> Meeting Chart</h3>
                             </div>
                             <div class="panel-body">
                                 <div id="morris-donut-chart"></div>
                                 <div class="text-right">
+                                  <h4>Declined meetings</h4>  <div class="huge">{{Meeting::where('accepted', '=', 0)->get()->count()}}</div>
+                                    <h4>Pending Replies: </h4>  <div class="huge">{{Meeting::where('accepted', '=', NULL)->get()->count()}}</div>
                                     <a href="#">View Details <i class="fa fa-arrow-circle-right"></i></a>
                                 </div>
                             </div>
@@ -184,15 +186,15 @@
                     <div class="col-lg-4">
                         <div class="panel panel-default">
                             <div class="panel-heading">
-                                <h3 class="panel-title"><i class="fa fa-money fa-fw"></i> Transactions Panel</h3>
+                                <h3 class="panel-title"><i class="fa fa-money fa-fw"></i> Accepted Meetings</h3>
                             </div>
                             <div class="panel-body">
                                 <div class="table-responsive">
                                     <table class="table table-bordered table-hover table-striped">
                                         <thead>
                                             <tr>
-                                                <th>Order #</th>
-                                                <th>Order Date</th>
+                                                <th>Meeting ID</th>
+                                                <th>Meeting Details</th>
                                                 <th>Order Time</th>
                                                 <th>Amount (USD)</th>
                                             </tr>
@@ -250,7 +252,7 @@
                                     </table>
                                 </div>
                                 <div class="text-right">
-                                    <a href="#">View All Transactions <i class="fa fa-arrow-circle-right"></i></a>
+                                    <a href="#">View All Meetings <i class="fa fa-arrow-circle-right"></i></a>
                                 </div>
                             </div>
                         </div>

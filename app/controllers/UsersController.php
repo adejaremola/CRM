@@ -18,7 +18,7 @@ class UsersController extends BaseController {
 		return View::make('admin.admin')->with('meetingAccepted',$meetingAccepted);
 	}
 	
-	
+
 	public function bookK()
 	{
 		return View::make('bookkeeper.bookK');
@@ -52,8 +52,8 @@ class UsersController extends BaseController {
 
 	public function deleteClient($id)
 	{
-		//User::find($id)->delete();
-		User::destroy($id);
+		User::find($id)->delete();
+		//User::destroy($id);
 		return Redirect::to('viewC')->withMessage('User successfully deleted');
 	}
 
@@ -81,11 +81,6 @@ class UsersController extends BaseController {
 		return View::make('bookKeeper.viewProfile')->with('user', $user)->with('clients', $clients)->with('companies', $companies);
 	}
 
-	public function upload()
-	{
-
-		return View::make('bookkeeper.upload');
-	}
 
 	public function retrieve()
 	{
@@ -121,25 +116,11 @@ class UsersController extends BaseController {
 	
 
 
-
-	public function fileUser()
+	public function upload($id)
 	{
-		
-		$email = Input::get('email');
-		$user = User::where('email', '=', $email)->first();
-		$clients = Client::all();
-	if(!User::where('email', '=', $email)->get())
-		{
-			return Redirect::route('retrieve');
-		}
-		else {
-			foreach ($clients as $client) {
-				if ($client->user_id == $user->id)
-				{
-					return View::make('bookKeeper.upload')->with('client', $client);
-				}
-			}
-		}
+
+		$client = Client::find($id);
+		return View::make('bookkeeper.upload')->with('client', $client);
 	}
 
 
@@ -152,8 +133,9 @@ class UsersController extends BaseController {
 
 		if ($validate->fails()) {
 			dd($validate->errors()->all());
-			return Redirect::route('bookKeeper.bookK')->withErrors($validate)->withInput();
+			return Redirect::route('bookKeeper.bookK')->withErrors($validate);
 		} else {
+			$client = Client::all();
 			$attachment = new Attachment();
 			$attachment->client_id = Input::get('client_id');
 			$attachment->uploaded_by = Input::get('uploaded_by');
@@ -163,9 +145,9 @@ class UsersController extends BaseController {
 			$attachment->attachment_type = $file->getClientOriginalName();
 			$attachment->attachment_url = url('files/' . $filename['attachment']);
 			$attachment->save();
-		}
-			return Redirect::to('home')->with('Files Uploaded');
 
+			return View::make('admin.admin')->with('success','Files Uploaded');
+		}
 	}
 
 
@@ -320,7 +302,7 @@ class UsersController extends BaseController {
         } 
         else
         {
-        	//return Redirect::route('Login')->with('fail','Invalid username or password');
+        	return Redirect::route('Login')->with('fail','Invalid username or password');
         }
         
     }	
@@ -349,7 +331,7 @@ class UsersController extends BaseController {
 			$user->other_names = Input::get('other_names');
 			$user->email = Input::get('email');
 			$user->password = Hash::make(Input::get('password'));
-			$user['roles_id'] = 4;
+			$user['roles_id'] = 1;
 			$user->save();
 
 		Mail::send('users.mails.welcome', array('first_name'=>Input::get('first_name')), function($message){

@@ -8,7 +8,7 @@
                 <div class="col-lg-12">
                     <div class="panel panel-default">
                         <div class="panel-heading">
-                            <h3 class="panel-title"><i class="fa fa-money fa-fw"></i> Transactions Panel</h3>
+                            <h3 class="panel-title"><i class="fa fa-user fa-fw"></i> Personal Profile view</h3>
                         </div>
 
 
@@ -54,7 +54,7 @@
                                                         @endif
                                                     @endforeach
                                                             <td><a href="{{url('meetingRequest/'.$user->id)}}" type="" class="btn btn-sm  btn-success">Request Meeting</a></td>
-                                                    <td> <a href="{{url('retrieve/'.$user->id)}}" class="btn btn-sm  btn-success">Upload</a></td>
+                                                    <td> <a href="{{url('upload/'.$client->id)}}" class="btn btn-sm  btn-success">Upload</a></td>
 
 
 
