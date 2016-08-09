@@ -80,7 +80,7 @@ Route::post('meetingRequest',array('uses' => 'meetingController@meetingPost', 'a
 
 Route::get('meetings', 'meetingController@meetings');
 
-Route::get('retrieve/{id}', 'UsersController@retrieve');
+Route::get('retrieve', 'UsersController@retrieve');
 Route::post('fileUser', array('uses' => 'UsersController@fileUser', 'as' => 'fileUser'));
 Route::get('upload', 'UsersController@upload');
 Route::post('uploadFile', array('uses' => 'UsersController@uploadFile', 'as' => 'uploadFile'));
