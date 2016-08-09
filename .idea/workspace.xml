@@ -2,18 +2,7 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="994ae93e-bc42-4121-81c8-097acfc025ed" name="Default" comment="p">
-      <change type="DELETED" beforePath="$PROJECT_DIR$/app/views/admin/admin.blade.php" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/app/views/users/admin.blade.php" afterPath="" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/controllers/UsersController.php" afterPath="$PROJECT_DIR$/app/controllers/UsersController.php" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/models/Meeting.php" afterPath="$PROJECT_DIR$/app/models/Meeting.php" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/models/Note.php" afterPath="$PROJECT_DIR$/app/models/Note.php" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/routes.php" afterPath="$PROJECT_DIR$/app/routes.php" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/views/admin/meetings.blade.php" afterPath="$PROJECT_DIR$/app/views/admin/meetings.blade.php" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/views/layouts/front/navbar.blade.php" afterPath="$PROJECT_DIR$/app/views/layouts/front/navbar.blade.php" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/views/users/client.blade.php" afterPath="$PROJECT_DIR$/app/views/users/client.blade.php" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/views/users/mails/welcome.blade.php" afterPath="$PROJECT_DIR$/app/views/users/mails/welcome.blade.php" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/views/users/notes.blade.php" afterPath="$PROJECT_DIR$/app/views/users/notes.blade.php" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/app/controllers/AdminController.php" afterPath="" />
     </list>
     <ignored path="CRM.iws" />
     <ignored path=".idea/workspace.xml" />
@@ -35,7 +24,7 @@
   </component>
   <component name="FileEditorManager">
     <leaf SIDE_TABS_SIZE_LIMIT_KEY="300">
-      <file leaf-file-name="routes.php" pinned="false" current-in-tab="false">
+      <file leaf-file-name="routes.php" pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/app/routes.php">
           <provider selected="true" editor-type-id="text-editor">
             <state relative-caret-position="183">
@@ -47,7 +36,7 @@
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="UsersController.php" pinned="false" current-in-tab="true">
+      <file leaf-file-name="UsersController.php" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/app/controllers/UsersController.php">
           <provider selected="true" editor-type-id="text-editor">
             <state relative-caret-position="102">
@@ -485,12 +474,12 @@
       <workItem from="1470302928462" duration="7847000" />
       <workItem from="1470312833023" duration="142138000" />
       <workItem from="1470608055152" duration="6576000" />
-      <workItem from="1470651931438" duration="35754000" />
+      <workItem from="1470651931438" duration="35890000" />
     </task>
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="293774000" />
+    <option name="totallyTimeSpent" value="293910000" />
   </component>
   <component name="ToolWindowManager">
     <frame x="-8" y="-8" width="1382" height="744" extended-state="6" />
@@ -860,16 +849,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/app/routes.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="183">
-          <caret line="82" column="78" selection-start-line="82" selection-start-column="78" selection-end-line="82" selection-end-column="78" />
-          <folding>
-            <element signature="e#7#392#0#PHP" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/app/views/admin/viewMeetNote.blade.php">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="204">
@@ -920,6 +899,16 @@
         </state>
       </provider>
     </entry>
+    <entry file="file://$PROJECT_DIR$/app/controllers/UsersController.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="102">
+          <caret line="211" column="0" selection-start-line="211" selection-start-column="0" selection-end-line="211" selection-end-column="0" />
+          <folding>
+            <marker date="1470735114026" expanded="true" signature="7398:7408" ph="{...}" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
     <entry file="file://$PROJECT_DIR$/app/views/admin/admin.blade.php">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="130">
@@ -928,12 +917,12 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/app/controllers/UsersController.php">
+    <entry file="file://$PROJECT_DIR$/app/routes.php">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="102">
-          <caret line="211" column="0" selection-start-line="211" selection-start-column="0" selection-end-line="211" selection-end-column="0" />
+        <state relative-caret-position="183">
+          <caret line="82" column="78" selection-start-line="82" selection-start-column="78" selection-end-line="82" selection-end-column="78" />
           <folding>
-            <marker date="1470735114026" expanded="true" signature="7398:7408" ph="{...}" />
+            <element signature="e#7#392#0#PHP" expanded="true" />
           </folding>
         </state>
       </provider>
