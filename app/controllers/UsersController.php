@@ -52,8 +52,8 @@ class UsersController extends BaseController {
 
 	public function deleteClient($id)
 	{
-		//User::find($id)->delete();
-		User::destroy($id);
+		User::find($id)->delete();
+		//User::destroy($id);
 		return Redirect::to('viewC')->withMessage('User successfully deleted');
 	}
 
@@ -115,27 +115,6 @@ class UsersController extends BaseController {
 	}
 	
 
-
-
-	public function fileUser()
-	{
-		
-		$email = Input::get('email');
-		$user = User::where('email', '=', $email)->first();
-		$clients = Client::all();
-	if(!User::where('email', '=', $email)->get())
-		{
-			return Redirect::route('retrieve');
-		}
-		else {
-			foreach ($clients as $client) {
-				if ($client->user_id == $user->id)
-				{
-					return View::make('bookKeeper.upload')->with('client', $client);
-				}
-			}
-		}
-	}
 
 	public function upload($id)
 	{
