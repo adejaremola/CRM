@@ -14,8 +14,11 @@ class UsersController extends BaseController {
 		
 	public function admin()
 	{
-		return View::make('admin.admin');
+		$meetingAccepted = Meeting::where('accepted', '=', 1)->get()->count();
+		return View::make('admin.admin')->with('meetingAccepted',$meetingAccepted);
 	}
+	
+	
 	public function bookK()
 	{
 		return View::make('bookkeeper.bookK');
@@ -210,15 +213,7 @@ class UsersController extends BaseController {
 		return View::make('users.meeting');
 	}
 
-	public function clientCount()
-	{
-       // $clients = Client::all();
-		$meeting = Meeting::where('accepted', '=', 1)->count();
-		
-		return View::make('admin.admin')->with('meetings', $meeting);
-
-	}
-
+	
 
 	public function attachNotes($id)
 	{

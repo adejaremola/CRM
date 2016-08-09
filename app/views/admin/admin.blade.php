@@ -57,7 +57,7 @@
                                         <i class="fa fa-tasks fa-5x"></i>
                                     </div>
                                     <div class="col-xs-9 text-right">
-                                        <div class="huge"></div>
+                                        <div class="huge">{{Meeting::where('accepted', '=', 1)->get()->count()}}</div>
                                         <div>New Tasks!</div>
                                     </div>
                                 </div>
