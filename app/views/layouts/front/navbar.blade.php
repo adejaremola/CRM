@@ -123,7 +123,7 @@
                 <ul  class="nav navbar-nav side-nav" >
 
                     <li class="active">
-                        <a href="#"><i class="fa fa-fw fa-dashboard"></i> Dashboard</a>
+                        <a href="{{('admin')}}"><i class="fa fa-fw fa-dashboard"></i> Dashboard</a>
                     </li>
                     @if(Auth::check() && (Auth::user()->isclient()))
                     <li>
@@ -136,20 +136,7 @@
                         </ul>
                     </li>
                     @endif
-                    <li>
-                        <a href="#" class="dropdown dropdown-toggle" data-toggle="dropdown"><i class="fa  fa-tasks"></i> Tasks <i class="fa fa-fw fa-caret-down"></i></a>
-                        <ul class="dropdown-menu dropdown-menu-right">
-                            <li>
-                               <a href="{{('notes')}}"> Notes </a> 
-                            </li>
-
-                            <li>
-                               <a href="#"> Comments </a> 
-                            </li>
-                           
-                           
-                        </ul>
-                        </li>
+                   
                                   @if(Auth::check() && (Auth::user()->isAdmin()))
                         <li>
                             <a href="#" class="dropdown dropdown-toggle" data-toggle="dropdown"><i class="fa fa-fw fa-arrows-v"></i> Meetings <i class="fa fa-fw fa-caret-down"></i></a>
