@@ -99,6 +99,9 @@
                     <ul class="dropdown-menu">
                         @if((Auth::user()->isClient()))
                         <li>
+                            <a href="{{('createProfile')}}"><i class="fa fa-fw fa-user"></i>Creat Profile</a>
+                        </li>
+                            <li>
                             <a href="{{('updateProfile')}}"><i class="fa fa-fw fa-user"></i>Update Profile</a>
                         </li>
                         <li>

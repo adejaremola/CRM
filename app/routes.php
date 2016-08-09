@@ -34,14 +34,14 @@ Route::get('client', 'UsersController@client');
     Route::post('Login', array('as' => 'PostLogin', 'uses' => 'UsersController@LoginUser'));
     Route::post('storeBookkeepr', array('uses' => 'UsersController@storeBookk', 'as' => 'storeBookk'));
 
-
+Route::get('updateProfile', array('uses' => 'UsersController@Update', 'as' => 'pUpdate'));
 
 Route::get('invite', 'UsersController@invite');
 Route::post('sendInvite', array('uses' => 'UsersController@sendInvite', 'as' => 'sendInvite'));
 
 Route::get('dashboard', 'UsersController@dashboard');
 
-Route::get('Logout',array('uses' => 'UsersController@getLogout', 'as' => 'Logout' ));
+Route::get('/Logout',array('uses' => 'UsersController@getLogout', 'as' => 'Logout' ));
 
 Route::get('admin', 'UsersController@admin');
 Route::get('calendar', 'UsersController@calendar');
@@ -61,7 +61,11 @@ Route::get('notes', 'UsersController@notes');
 Route::post('storeNote', array('uses' => 'UsersController@storeNote', 'as' => 'storeNote'));
 
 
-Route::get('updateProfile', 'UsersController@updateProfile');
+Route::get('updateProfile/{id}', 'UsersController@updateProfile');
+Route::get('createProfile/{id}', 'UsersController@createProfile');
+
+Route::post('update', array('uses' => 'UsersController', 'as' => 'update'));
+
 Route::post('updateProfile',array( 'uses' => 'UsersController@storeProfile', 'as' => 'storeProfile'));
 Route::get('profile/{id}', array('uses' => 'UsersController@profile', 'as' => 'profile'));
 

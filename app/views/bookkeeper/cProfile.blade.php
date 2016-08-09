@@ -12,8 +12,6 @@
                         </div>
 
 
-
-
                         <div class="panel-body">
                             <div class="table-responsive">
                                 <table class="table table-bordered table-hover table-striped"   style="width:1000px">
@@ -56,8 +54,6 @@
                                                             <td><a href="{{url('meetingRequest/'.$user->id)}}" type="" class="btn btn-sm  btn-success">Request Meeting</a></td>
                                                     <td> <a href="{{url('upload/'.$client->id)}}" class="btn btn-sm  btn-success">Upload</a></td>
 
-
-
                                         </tr>
 
                                         </tbody>
@@ -65,15 +61,7 @@
                                                    @endif
                                                  @endforeach
 
-
-
                                 </table>
-
-
-
-
-
-
 
                             </div>
 
