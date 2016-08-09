@@ -4,17 +4,26 @@
 
 
 
-    <div id="page-wrapper" style="padding-top:280px;">
+    <div id="page-wrapper" style="padding-top:50px;">
+        <div class="container-fluid">
+
+            <!-- Page Heading -->
+            <div class="row">
+                <div class="col-lg-12">
+
+        <div class="panel-heading">
+            <h3 class="panel-title"><i class="fa fa-user fa-fw"></i> Update Personal Profile view</h3>
+        </div>
 
         <div class="container-fluid" >
             <div class="col-md-12">
 
             <!-- Page Heading -->
 
-                {{Form::open(array('route'=>'storeProfile','class'=>'form-vertical','role'=>'form'))}}
+                {{Form::open(array('route'=>'update','class'=>'form-vertical','role'=>'form'))}}
                     <div class="form-group">
 
-                        <label for="PhoneNumber" class="col-lg-2 control-label">Mobile Phone Number here:</label>
+                        <label for="PhoneNumber" class="col-lg-2 control-label">Mobile Phone :</label>
                         <div class="col-lg-10 form-group">
                             {{Form::text('phoneNumber_1','',array('class'=>'form-control'))}}
                         </div>
@@ -22,7 +31,7 @@
 
                     <div class="form-group">
 
-                        <label for="PhoneNumber" class="col-lg-2 control-label">Office Phone Number here:</label>
+                        <label for="PhoneNumber" class="col-lg-2 control-label">Office Phone :</label>
                         <div class="col-lg-10 form-group">
                             {{Form::text('phoneNumber_2','',array('class'=>'form-control'))}}
                         </div>
@@ -58,13 +67,21 @@
                 {{Form::close()}}
 
             <!-- /.row -->
-            <div>
-                <h4>Thanks for being our customer</h4>
-              </div>
+                                    <div class="col-md-6 col-md-6" style="font-family: 'Gentium Book Basic';">
+                                        <h4>Thanks for being our customer</h4>
+                                    </div>
             </div>
         </div>
-        <!-- /.row -->
-    </div>
+                        <!-- /.row -->
+                                     </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                       </div>
+                       </div>
+                    </div>
+                  </div>
 
 
 

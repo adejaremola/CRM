@@ -466,7 +466,7 @@ class UsersController extends BaseController {
 
 		$user->update($data);
 
-		return Redirect::route('users.index');
+		return Redirect::route('users.client');
 	}
 
 
