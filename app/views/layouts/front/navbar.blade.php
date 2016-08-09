@@ -130,8 +130,14 @@
                     </li>
                     @if(Auth::check() && (Auth::user()->isclient()))
                     <li>
-                        <a href="{{('request')}}" class="dropdown dropdown-toggle" data-toggle="dropdown"><i class="fa fa-fw fa-arrows-v"></i> Meeting Request <i class="fa fa-fw fa-caret-down"></i></a>
+                        <a href="" class="dropdown dropdown-toggle" data-toggle="dropdown"><i class="fa fa-fw fa-arrows-v"></i> Meeting Request <i class="fa fa-fw fa-caret-down"></i></a>
+                        <ul class="dropdown-menu dropdown-menu-right">
+                            <li>
+                                <a href="{{('request')}}">My Meeting Request </a>
+                            </li>
 
+
+                        </ul>
                     </li>
                     @endif
 

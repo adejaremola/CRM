@@ -28,7 +28,7 @@ class UsersController extends BaseController {
 	public function updateProfile($id)
 	{
 		$user = User::find($id);
-		return View::make('users.updateProfile')->with('user', $user);
+		return View::make('users.updateProfile');
 	}
 
 	public function createProfile()
@@ -466,7 +466,7 @@ class UsersController extends BaseController {
 
 		$user->update($data);
 
-		return Redirect::route('users.client');
+		return Redirect::route('users.index');
 	}
 
 
