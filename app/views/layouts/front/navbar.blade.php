@@ -1,7 +1,7 @@
 <div id="wrapper">
 
         <!-- Navigation -->
-        <nav class="navbar navbar-inverse navbar-fixed-top" role="navigation">
+        <nav class="navbar navbar-fixed-top" role="navigation" style="background-color:darkslategray;">
             <!-- Brand and toggle get grouped for better mobile display -->
             <div class="navbar-header">
                 <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-ex1-collapse">
@@ -67,7 +67,33 @@
                         </li>
                     </ul>
                 </li>
-
+                <li class="dropdown">
+                    <a href="#" class="dropdown-toggle" data-toggle="dropdown"><i class="fa fa-bell"></i> <b class="caret"></b></a>
+                    <ul class="dropdown-menu alert-dropdown">
+                        <li>
+                            <a href="#">Alert Name <span class="label label-default">Alert Badge</span></a>
+                        </li>
+                        <li>
+                            <a href="#">Alert Name <span class="label label-primary">Alert Badge</span></a>
+                        </li>
+                        <li>
+                            <a href="#">Alert Name <span class="label label-success">Alert Badge</span></a>
+                        </li>
+                        <li>
+                            <a href="#">Alert Name <span class="label label-info">Alert Badge</span></a>
+                        </li>
+                        <li>
+                            <a href="#">Alert Name <span class="label label-warning">Alert Badge</span></a>
+                        </li>
+                        <li>
+                            <a href="#">Alert Name <span class="label label-danger">Alert Badge</span></a>
+                        </li>
+                        <li class="divider"></li>
+                        <li>
+                            <a href="#">View All</a>
+                        </li>
+                    </ul>
+                </li>
                 <li class="dropdown">
                     <a href="#" class="dropdown-toggle" data-toggle="dropdown"><i class="fa fa-user"></i> {{Auth::user()->first_name}}<b class="caret"></b></a>
                     <ul class="dropdown-menu">
@@ -87,14 +113,14 @@
                         </li>
                         <li class="divider"></li>
                         <li>
-                            <a href="{{('getLogout')}}"><i class="fa fa-fw fa-power-off"></i> Log Out</a>
+                            <a href="{{('Logout')}}"><i class="fa fa-fw fa-power-off"></i> Log Out</a>
                         </li>
                     </ul>
                 </li>
             </ul>
             <!-- Sidebar Menu Items - These collapse to the responsive navigation menu on small screens -->
             <div class="collapse navbar-collapse navbar-ex1-collapse">
-                <ul class="nav navbar-nav side-nav">
+                <ul  class="nav navbar-nav side-nav" >
 
                     <li class="active">
                         <a href="#"><i class="fa fa-fw fa-dashboard"></i> Dashboard</a>
@@ -129,7 +155,10 @@
                             <a href="#" class="dropdown dropdown-toggle" data-toggle="dropdown"><i class="fa fa-fw fa-arrows-v"></i> Meetings <i class="fa fa-fw fa-caret-down"></i></a>
                             <ul class="dropdown-menu dropdown-menu-right">
                                 <li>
-                                    <a href="{{('meetings')}}"> Meetings </a>
+                                    <a href="{{('meetings')}}">Scheduled Meetings </a>
+                                </li>
+                                <li>
+                                    <a href="{{('meetingDetails')}}"> Meeting  Details </a>
                                 </li>
 
                             </ul>
@@ -200,5 +229,5 @@
                                          
                 </ul>
             </div>
-            <!-- /.navbar-collapse -->
+
         </nav>

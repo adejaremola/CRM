@@ -2,15 +2,13 @@
 
 class Note extends \Eloquent {
 
-	protected $fillable = [ 'notes_description'];
+	protected $table = 'notes';
+
 
 	public function meeting()
 	{ 
 		return $this->hasMany('meeting');
 	}
 
-	public function user()
-	{
-		return $this->belongsTo('User');
-	}
+
 }

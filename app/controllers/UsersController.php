@@ -2,23 +2,6 @@
 
 class UsersController extends BaseController {
 
-	/**
-	 * Display a listing of users
-	 *
-	 * @return Response
-	 */
-	public function index()
-	{
-		$users = User::all();
-
-		return View::make('users.index', compact('users'));
-	}
-	
-	/**
-	 * Show the form for creating a new user
-	 *
-	 * @return Response
-	 */
 	public function create()
 	{
 		return View::make('users.create');
@@ -118,7 +101,6 @@ class UsersController extends BaseController {
 	
 	public function accept($id)
 	{
-		
 		$meetings = Meeting::find($id);
 		$meetings->accepted = 1;
 		$meetings->save();
@@ -222,10 +204,7 @@ class UsersController extends BaseController {
 	{
 		return View::make('users.Register');
 	}
-	public function calendar()
-	{
-		return View::make('users.calendar');
-	}
+
 	public function meeting()
 	{
 		return View::make('users.meeting');
@@ -233,7 +212,11 @@ class UsersController extends BaseController {
 
 	public function clientCount()
 	{
+       // $clients = Client::all();
+		$meeting = Meeting::where('accepted', '=', 1)->count();
 		
+		return View::make('admin.admin')->with('meetings', $meeting);
+
 	}
 
 
@@ -246,35 +229,42 @@ class UsersController extends BaseController {
 	
 	public function storeNote()
 	{
-
 		$validate = Validator::make(Input::all(), array(
 			'notes_description' => 'required',
-
 		));
-		if($validate->fails())
+		if($validate->passes())
 		{
-			return Redirect::to('notes')->withErrors($validate)->withInput();
-		}
-		else
-		{
-			$meeting = Meeting::all();
+			$clients = Client::all();
+			$meetings  = Meeting::all();
 			$note = new Note();
 			$note->meet_id = Input::get('meet_id');
 			$note->notes_description = Input::get('notes_description');
 			$note->created_by = Input::get('created_by');
-			$note->save();
 			if($note->save())
 			{
-				return View::make('admin.meetings')->with('meeting', $meeting)->withMessage('success','A note has been added ro this meeting');
+				return View::make('admin.meetings')->with('clients',$clients)->with('meetings', $meetings)->withMessage('success','A note has been added ro this meeting');
 			}
+			else
+			{
+				return View::make('admin.meetings')->with('meetings', $meetings)->withErrors();
+			}
+		}
+		else
+		{
+			$meeting = Meeting::find(Input::get('meet_id'));
+			Input::flash();
+			return View::make('users.notes')->with('meeting', $meeting)->withErrors($validate);
 		}
 	}
 
-	public function notes()
+	//this function shows details of meetings and notes attached to it.
+	public function viewMeetingNotes()
 	{
-
-         return View::make('users.notes');
+		$meetings = Meeting::all();
+		$notes = Note::all();
+		return View::make('admin.viewMeetNote')->with('meetings',$meetings)->with('notes',$notes);
 	}
+	
 
 
 	public function viewC()
@@ -308,12 +298,6 @@ class UsersController extends BaseController {
 		return Redirect::route('home');
 	}
 
-	public function adminLogin()
-	{
-		return View::make('admin.adminLogin');
-	}
-
-
 	
     public function LoginUser()
 	{
@@ -323,26 +307,25 @@ class UsersController extends BaseController {
         if(Auth::attempt(array('email' => $email, 'password' => $password),true))
         {
              $user = Auth::user();
-        	 $user->save();
 
-        	 if ($data['roles_id'] = 4)
+        	 if ( Auth::user()->roles_id == 4)
         	 {
         	 	 return View::make('users.client')->withUser($user);
         	 }
-			elseif ($data['roles_id'] = 1)
+			elseif (Auth::user()->roles_id == 1)
 			{
 				return View::make('admin.admin')->withUser($user);
 			}
-			 elseif ($data['roles_id'] = 3)
+			 elseif ( Auth::user()->roles_id == 3)
 			{
-				return View::make('bookKeeper.bookK')->withUser($user);
+				return View::make('admin.admin')->withUser($user);
 			}
            
            
         } 
         else
         {
-        	return Redirect::route('Login')->with('fail','Invalid username or password');
+        	//return Redirect::route('Login')->with('fail','Invalid username or password');
         }
         
     }	
@@ -445,7 +428,7 @@ class UsersController extends BaseController {
 			$message->to(Input::get('email'), Input::get('name'))->subject('An invitation to sign up on Sci Accounting Hub!');
 		});
 
-		   return View::make('admin.invite')->withMessage('success','Invitation sent');
+		   return View::make('admin.invite')->with('success','Invitation sent');
 	   }
 
 

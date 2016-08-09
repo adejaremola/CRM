@@ -1,4 +1,4 @@
-<h1>Hi, {{ $name }}!</h1>
+<h1>Hi, {{ $first_name }}!</h1>
 
 <p style="font-family:Harrington; ">We'd like to personally welcome you to Sci Accounting hub Application.
     We will definitely give you the best automation you deserve.
