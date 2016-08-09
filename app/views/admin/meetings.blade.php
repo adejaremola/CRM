@@ -23,7 +23,7 @@
                             @endif
                             <thead>
                             <tr>
-                                <th>MEETING ID</th>
+                                <th>MEETING FOR</th>
                                 <th>MEETING PURPOSE</th>
                                 <th>STATUS</th>
                                 <th>ADD NOTE </th>

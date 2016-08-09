@@ -39,16 +39,13 @@
 
                              <form action="{{URL::route('storeNote')}}" method="post" role="form" >
                             <div class="form-group input-group">
-                                <label class="-align-left">Meeting ID</label>
-
-                                <input  type="text" name="meet_id"  value="{{$meeting->id}}" class="form-control" disabled >
-
+                                <input  type="hidden" name="meet_id"  value="{{$meeting->id}}" class="form-control" >
                             </div>
 
 
                             <div class="form-group input-group">
                                 <label class="-align-left"> Notes here: </label>
-                                <textarea type="textarea" name="meeting_description" class="form-control" id="textarea" cols="70" rows="5"></textarea>
+                                <textarea type="textarea" name="notes_description" class="form-control" id="textarea" cols="70" rows="5"></textarea>
                             </div>
 
                             <div class="form-group input-group">

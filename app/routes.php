@@ -31,7 +31,7 @@ Route::get('client', 'UsersController@client');
 
 
     Route::post('Register', array('as' => 'PostRegister', 'uses' => 'UsersController@storeUser'));
-    Route::post('Login', array('as' => 'PostLogin', 'uses' => 'UsersController@loginUser'));
+    Route::post('Login', array('as' => 'PostLogin', 'uses' => 'UsersController@LoginUser'));
     Route::post('storeBookkeepr', array('uses' => 'UsersController@storeBookk', 'as' => 'storeBookk'));
 
 
@@ -41,7 +41,7 @@ Route::post('sendInvite', array('uses' => 'UsersController@sendInvite', 'as' => 
 
 Route::get('dashboard', 'UsersController@dashboard');
 
-Route::get('getLogout',array('uses' => 'UsersController@getLogout', 'as' => 'getLogout' ));
+Route::get('Logout',array('uses' => 'UsersController@getLogout', 'as' => 'Logout' ));
 
 Route::get('admin', 'UsersController@admin');
 Route::get('calendar', 'UsersController@calendar');
@@ -80,6 +80,11 @@ Route::post('meetingRequest',array('uses' => 'meetingController@meetingPost', 'a
 
 Route::get('meetings', 'meetingController@meetings');
 
+<<<<<<< HEAD
+=======
+Route::get('meetingDetails', array('uses' => 'UsersController@viewMeetingNotes', 'as' => 'meetingDetails'));
+
+>>>>>>> f651f2793836378b0472f7dc4f643e210d394e80
 Route::get('retrieve', 'UsersController@retrieve');
 Route::post('fileUser', array('uses' => 'UsersController@fileUser', 'as' => 'fileUser'));
 Route::get('upload', 'UsersController@upload');
@@ -94,14 +99,5 @@ Route::post('reset/{token}',array('uses' => 'RemindersController@postReset' ,'as
 
 
 
-
-Route::group(array('prefix' => 'admin'), function(){
-    Route::get('adminLogin', 'admin.AdminAuthController@adminLogin');
-    Route::post('adminLogin', 'admin.AdminAuthController@adminLogin');
-    Route::get('adminRegister', 'admin.AdminAuthController@adminRegister');
-    Route::post('adminRegister', 'admin.AdminAuthController@adminStore');
-
-
-});
 
 
