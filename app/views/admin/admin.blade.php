@@ -36,7 +36,7 @@
                                     </div>
                                     <div class="col-xs-9 text-right">
                                         <div class="huge"><span> {{ Client::count() }}</span></div>
-                                        <div>Number Clients!</div>
+                                        <div>Number of Clients!</div>
                                     </div>
                                 </div>
                             </div>
