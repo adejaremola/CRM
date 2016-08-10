@@ -61,10 +61,10 @@ Route::get('notes', 'UsersController@notes');
 Route::post('storeNote', array('uses' => 'UsersController@storeNote', 'as' => 'storeNote'));
 
 
-Route::get('updateProfile/{id}', 'UsersController@updateProfile');
-Route::get('createProfile/{id}', 'UsersController@createProfile');
+Route::get('updateProfile/{id}',  array('uses' => 'UsersController@updateProfile', 'as' => 'updateProfile'));
+Route::get('createProfile', 'UsersController@createProfile');
 
-Route::post('update', array('uses' => 'UsersController', 'as' => 'update'));
+Route::post('update', array('uses' => 'UsersController@update', 'as' => 'update'));
 
 Route::post('updateProfile',array( 'uses' => 'UsersController@storeProfile', 'as' => 'storeProfile'));
 Route::get('profile/{id}', array('uses' => 'UsersController@profile', 'as' => 'profile'));

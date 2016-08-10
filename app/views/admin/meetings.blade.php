@@ -51,7 +51,7 @@
 
                                                 <td> Declined </td>
 
-                                                @elseif($meet->accepted == 'NULL')
+                                                @else
 
                                                 <td> Pending </td>
 

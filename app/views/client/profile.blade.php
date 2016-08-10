@@ -50,9 +50,7 @@
 
                             <div class="panel panel-info">
                                 <div class="panel-heading">
-                                    @if($user->id == Auth::user()->id )
-                                    <h3 class="panel-title">{{$user->first_name . " " . $user->other_names  }}</h3>
-                                </div>
+
                                 <div class="panel-body">
                                     <div class="row">
                                         <div class="col-md-3 col-lg-3 " align="center"> <img alt="User Pic" src="http://babyinfoforyou.com/wp-content/uploads/2014/10/avatar-300x300.png" class="img-circle img-responsive"> </div>
@@ -61,46 +59,62 @@
                                         <div class=" col-md-9 col-lg-9 ">
                                             <table class="table table-user-information">
                                                 <tbody>
-                                                <tr>
-                                                    <td>User ID NO:</td>
+                                                <tr> @if (isset($user))
+                                                    <td>User ID :</td>
                                                     <td>{{$user->id}}</td>
+                                                        {{ Session::put('user',$user->id)}}
+                                                </tr>
+                                                <tr>
+                                                    <td>First Name</td>
+                                                    <td>{{$user->first_name}}</td>
+                                                </tr>
+                                                <tr>
+                                                    <td>Other Names</td>
+                                                    <td>{{$user->other_names}}</td>
                                                 </tr>
                                                 <tr>
                                                     <td>email</td>
                                                     <td>{{$user->email}}</td>
                                                 </tr>
-                                                @foreach($clients as $client)
-                                                    @if($client->user_id == $client->id )
+                                                @endif
+                                                    @if (isset($clients))
                                                 <tr>
                                                     <td>OFFICE MOBILE NUMBER</td>
-                                                    <td>{{ $client->phoneNumber_1 }}</td>
+                                                    <td>{{ $clients->phoneNumber_1 }}</td>
                                                 </tr>
 
                                                 <tr>
                                                     <td>MOBILE NUMBER</td>
-                                                    <td>{{ $client->phoneNumber_2 }}</td>
+                                                    <td>{{ $clients->phoneNumber_2 }}</td>
                                                 </tr>
                                                     @endif
-                                                @endforeach
+                                                @if (isset($message))
 
-                                                @foreach($companies as $company)
-                                                    @if($company->client_id == $client->id )
+                                                    <tr>
+
+                                                        <td>{{ $message }}</td>
+                                                    </tr>
+                                                @endif
+
+
+
+                                                @if (isset($companies))
                                                 <tr>
                                                     <td>COMPANY NAME</td>
-                                                    <td>{{ $company->company_name }}</td>
+                                                    <td>{{ $companies->company_name }}</td>
                                                 </tr>
 
                                                 <tr>
                                                     <td>COMPANY DETAILS</td>
-                                                    <td>{{ $company->company_details }}</td>
+                                                    <td>{{ $companies->company_details }}</td>
                                                 </tr>
                                                 <tr>
                                                     <td>COMPANY ADDRESS</td>
-                                                    <td>{{ $company->company_address }}</td>
+                                                    <td>{{ $companies->company_address }}</td>
                                                 </tr>
                                                     @endif
-                                                @endforeach
-                                                @endif
+
+
 
                                                 </tbody>
                                             </table>
@@ -109,23 +123,24 @@
                                         </div>
                                     </div>
                                 </div>
-                                <div class="panel-footer">
-                                    <a href="{{url('meetingRequest/'.$user->id)}}" data-original-title="Broadcast Message" data-toggle="tooltip" type="button" class="btn btn-sm btn-primary"><i class="glyphicon glyphicon-envelope"></i></a>
-                        <span class="pull-right">
-                            <a href="{{url('updateProfile/'.$user->id)}}" data-original-title="Edit this user" data-toggle="tooltip" type="button" class="btn btn-sm btn-warning"></i>Update</a>
-                            <a data-original-title="Remove this user" data-toggle="tooltip" type="button" class="btn btn-sm btn-danger"><i class="glyphicon glyphicon-remove"></i></a>
-                        </span>
-                                </div>
+                                    <?php
+
+                                    $user=Session::get('user');
+                                    ?>
+                                    @if(isset($user) && isset($clients)&&isset($companies))
+                                    @endif
+
+                                       </div>
 
                             </div>
+                            {{link_to_route('updateProfile','Update',array($user),array('class'=>'btn btn-success'))}}
                         </div>
                     </div>
 
-                                    <div>
-                                        <h4>Thanks for being our customer</h4>
-                                    </div>
-
-                                </div>
-                            </div>
-                        </div>
+                 <div>
+                     <h4>Thanks for being our customer</h4>
+                 </div>
+             </div>
+        </div>
+    </div>
 @stop

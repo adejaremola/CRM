@@ -19,7 +19,7 @@
             <div class="col-md-12">
 
             <!-- Page Heading -->
-
+@if(isset($user))
                 {{Form::open(array('route'=>'update','class'=>'form-vertical','role'=>'form'))}}
                     <div class="form-group">
 
@@ -65,6 +65,7 @@
                             </div>
 
                 {{Form::close()}}
+                @endif
 
             <!-- /.row -->
                                     <div class="col-md-6 col-md-6" style="font-family: 'Gentium Book Basic';">

@@ -52,7 +52,7 @@
                                     <input type="hidden" name="user_id" value="{{Auth::user()->id}}">
 
                                     <div class="col-lg-offset-2 col-lg-10">
-                                        &nbsp;&nbsp;&nbsp; {{Form::submit('Update',array('class'=>'btn btn-success'))}}
+                                        &nbsp;&nbsp;&nbsp; {{Form::submit('Create',array('class'=>'btn btn-success'))}}
                                     </div>
 
                                 {{Form::close()}}
