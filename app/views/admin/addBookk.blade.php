@@ -64,7 +64,7 @@
                                         <option name="roles_id" value="3">Book keeper</option>
                                     </select>
                                 </div>
-
+                                    <input type="hidden" name="_token" value="{{csrf_token()}}">
                                 <div class="form-group">
                                     <input type='submit' class="btn btn-sm btn-success" value='Create'/>
                                 </div>
@@ -86,9 +86,6 @@
 
 
     <!-- /#page-wrapper -->
-
-
-
 
 
 @stop

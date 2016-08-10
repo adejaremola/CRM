@@ -68,6 +68,7 @@
                     {{Form::token()}}
 
                     <div class="form-row">
+
                         <button type="submit">Log in</button>
                     </div>
 
