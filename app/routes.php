@@ -28,11 +28,14 @@ Route::get('client', 'UsersController@client');
     Route::get('Login', array('as' => 'Login', 'uses' => 'UsersController@Login'));
     Route::get('addBookk', 'UsersController@addBookk');
 
+ 
 
-
+Route::group(array('before', 'csrf'),function()
+{
     Route::post('Register', array('as' => 'PostRegister', 'uses' => 'UsersController@storeUser'));
     Route::post('Login', array('as' => 'PostLogin', 'uses' => 'UsersController@LoginUser'));
     Route::post('storeBookkeepr', array('uses' => 'UsersController@storeBookk', 'as' => 'storeBookk'));
+});
 
 Route::get('updateProfile', array('uses' => 'UsersController@Update', 'as' => 'pUpdate'));
 
@@ -61,10 +64,10 @@ Route::get('notes', 'UsersController@notes');
 Route::post('storeNote', array('uses' => 'UsersController@storeNote', 'as' => 'storeNote'));
 
 
-Route::get('updateProfile/{id}', 'UsersController@updateProfile');
-Route::get('createProfile/{id}', 'UsersController@createProfile');
+Route::get('updateProfile/{id}',  array('uses' => 'UsersController@updateProfile', 'as' => 'updateProfile'));
+Route::get('createProfile', 'UsersController@createProfile');
 
-Route::post('update', array('uses' => 'UsersController', 'as' => 'update'));
+Route::post('update', array('uses' => 'UsersController@update', 'as' => 'update'));
 
 Route::post('updateProfile',array( 'uses' => 'UsersController@storeProfile', 'as' => 'storeProfile'));
 Route::get('profile/{id}', array('uses' => 'UsersController@profile', 'as' => 'profile'));

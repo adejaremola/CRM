@@ -63,8 +63,8 @@
 
               <div class="clearfix">
            
-                <div class="pull-right">
-            Accounting Hub <a href="sci.ng"> Sci </a>
+                <div class="pull-left" style="padding-left:20px; ">
+            <a href="sci.ng">Sci Accounting Hub  </a>
                 </div>
              </div>
           </div>

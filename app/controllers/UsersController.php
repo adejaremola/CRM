@@ -25,26 +25,38 @@ class UsersController extends BaseController {
 	}
 	
 
-	public function updateProfile($id)
-	{
-		$user = User::find($id);
-		return View::make('users.updateProfile')->with('user', $user);
-	}
+
 
 	public function createProfile()
 	{
-
-		return View::make('users.updateProfile');
+		return View::make('users.createProfile');
 	}
 
 	public function profile($id)
 	{
 		$user = User::find($id);
-		
-		$clients = Client::all();
-		$companies = Company::all();
-		return View::make('client.profile')->with('user', $user)->with('clients', $clients)->with('companies', $companies);
+		$clients = Client::where('user_id','=',$id)->first();
+		$clientid= Client::where('user_id','=',$id)->first();
+		if(isset($clientid) && !empty($clientid)){
+		$cli=$clientid->id;
+		$companies = Company::where('client_id','=',$cli)->first();
 
+		return View::make('client.profile')->with('user', $user)->with('clients', $clients)->with('companies', $companies);
+		}
+		return View::make('client.profile')->withMessage('no record found');
+	}
+
+	public function request()
+	{
+		$clients = Client::all();
+		$meetings = Meeting::all();
+		foreach ($clients as $client)
+		{
+			if($client->user_id == Auth::user()->id)
+			{
+				return View::make('client.request')->with('client', $client)->with('meetings', $meetings);
+			}
+		}
 	}
 
 	public function cProfile($id)
@@ -95,14 +107,6 @@ class UsersController extends BaseController {
 		return View::make('bookkeeper.retrieve');
 	}
 
-	public function request()
-	{
-		$meetings = Meeting::all();
-		$clients = Client::all();
-		return View::make('client.request')->with('meetings', $meetings)->with('clients',$clients);
-	}
-
-	
 	
 	public function accept($id)
 	{
@@ -161,8 +165,6 @@ class UsersController extends BaseController {
 	public function storeProfile()
 	{
 		$id = Input::get('user_id');
-		//$client = Client::find($id);
-
 		$client = new Client();
 		$client->user_id = $id;
 		$client->phoneNumber_1 = Input::get('phoneNumber_1');
@@ -179,7 +181,7 @@ class UsersController extends BaseController {
 				$company->company_details = Input::get('company_details');
 				$company->save();
 				
-				return Redirect::to('profile');
+				return Redirect::to('profile/'.$id);
 			}
 		}
 
@@ -453,20 +455,43 @@ class UsersController extends BaseController {
 	 * @param  int  $id
 	 * @return Response
 	 */
-	public function update($id)
-	{
-		$user = User::findOrFail($id);
 
-		$validator = Validator::make($data = Input::all(), User::$rules);
+	public function updateProfile($id)
+	{
+		$user = User::find($id);
+		return View::make('users.updateProfile')->with('user',$user);
+	}
+
+	public function update()
+	{
+
+		$validator = Validator::make(Input::all(), array(
+			'phoneNumber_1' => 'required',
+			'phoneNumber_2' => 'required',
+		));
 
 		if ($validator->fails())
 		{
-			return Redirect::back()->withErrors($validator)->withInput();
+			return Redirect::to('users.updateProfile')->withErrors($validator)->withInput();
+		} else {
+
+			$id = Input::get('user_id');
+			$client = new Client();
+			$client->user_id = $id;
+			$client->phoneNumber_1 = Input::get('phoneNumber_1');
+			$client->phoneNumber_2 = Input::get('phoneNumber_2');
+			$client->updadate();
+			if ($client->update() && $client->user_id == $id) {
+				$company = new Company();
+				$company->client_id = $client->id;
+				$company->company_name = Input::get('company_name');
+				$company->company_address = Input::get('company_address');
+				$company->company_details = Input::get('company_details');
+				$company->update();
+			}
+			return Redirect::route('client.profile')->with('success','Your profile has been updated');
 		}
 
-		$user->update($data);
-
-		return Redirect::route('users.client');
 	}
 
 

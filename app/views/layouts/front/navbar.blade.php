@@ -15,97 +15,21 @@
             <!-- Top Menu Items -->
             <ul class="nav navbar-right top-nav">
                 <li class="dropdown">
-                    <a href="#" class="dropdown-toggle" data-toggle="dropdown"><i class="fa fa-envelope"></i> <b class="caret"></b></a>
-                    <ul class="dropdown-menu message-dropdown">
-                        <li class="message-preview">
-                            <a href="#">
-                                <div class="media">
-                                    <span class="pull-left">
-                                        <img class="media-object" src="http://placehold.it/50x50" alt="">
-                                    </span>
-                                    <div class="media-body">
-                                        <h5 class="media-heading"><strong>Welcome</strong>
-                                        </h5>
-                                        <p class="small text-muted"><i class="fa fa-clock-o"></i> Yesterday at 4:32 PM</p>
-                                        <p>Lorem ipsum dolor sit amet, consectetur...</p>
-                                    </div>
-                                </div>
-                            </a>
-                        </li>
-                        <li class="message-preview">
-                            <a href="#">
-                                <div class="media">
-                                    <span class="pull-left">
-                                        <img class="media-object" src="http://placehold.it/50x50" alt="">
-                                    </span>
-                                    <div class="media-body">
-                                        <h5 class="media-heading"><strong>{{Auth::user()->first_name}}</strong>
-                                        </h5>
-                                        <p class="small text-muted"><i class="fa fa-clock-o"></i> Yesterday at 4:32 PM</p>
-                                        <p>Lorem ipsum dolor sit amet, consectetur...</p>
-                                    </div>
-                                </div>
-                            </a>
-                        </li>
-                        <li class="message-preview">
-                            <a href="#">
-                                <div class="media">
-                                    <span class="pull-left">
-                                        <img class="media-object" src="http://placehold.it/50x50" alt="">
-                                    </span>
-                                    <div class="media-body">
-                                        <h5 class="media-heading"><strong>{{Auth::user()->first_name}}</strong>
-                                        </h5>
-                                        <p class="small text-muted"><i class="fa fa-clock-o"></i> Yesterday at 4:32 PM</p>
-                                        <p>Lorem ipsum dolor sit amet, consectetur...</p>
-                                    </div>
-                                </div>
-                            </a>
-                        </li>
-                        <li class="message-footer">
-                            <a href="#">Read All New Messages</a>
-                        </li>
-                    </ul>
+
                 </li>
                 <li class="dropdown">
-                    <a href="#" class="dropdown-toggle" data-toggle="dropdown"><i class="fa fa-bell"></i> <b class="caret"></b></a>
-                    <ul class="dropdown-menu alert-dropdown">
-                        <li>
-                            <a href="#">Alert Name <span class="label label-default">Alert Badge</span></a>
-                        </li>
-                        <li>
-                            <a href="#">Alert Name <span class="label label-primary">Alert Badge</span></a>
-                        </li>
-                        <li>
-                            <a href="#">Alert Name <span class="label label-success">Alert Badge</span></a>
-                        </li>
-                        <li>
-                            <a href="#">Alert Name <span class="label label-info">Alert Badge</span></a>
-                        </li>
-                        <li>
-                            <a href="#">Alert Name <span class="label label-warning">Alert Badge</span></a>
-                        </li>
-                        <li>
-                            <a href="#">Alert Name <span class="label label-danger">Alert Badge</span></a>
-                        </li>
-                        <li class="divider"></li>
-                        <li>
-                            <a href="#">View All</a>
-                        </li>
-                    </ul>
+
+
                 </li>
                 <li class="dropdown">
                     <a href="#" class="dropdown-toggle" data-toggle="dropdown"><i class="fa fa-user"></i> {{Auth::user()->first_name}}<b class="caret"></b></a>
                     <ul class="dropdown-menu">
                         @if((Auth::user()->isClient()))
                         <li>
-                            <a href="{{('createProfile')}}"><i class="fa fa-fw fa-user"></i>Creat Profile</a>
-                        </li>
-                            <li>
-                            <a href="{{('updateProfile')}}"><i class="fa fa-fw fa-user"></i>Update Profile</a>
+                            <a href="{{url('createProfile')}}"><i class="fa fa-fw fa-user"></i>Create Profile</a>
                         </li>
                         <li>
-                            <a href="{{('profile/'.Auth::user()->id)}}"><i class="fa fa-fw fa-user"></i>View  Profile</a>
+                            <a href="{{url('profile/'.Auth::user()->id)}}"><i class="fa fa-fw fa-user"></i>View  Profile</a>
                         </li>
                         @endif
                         <li>
@@ -116,7 +40,7 @@
                         </li>
                         <li class="divider"></li>
                         <li>
-                            <a href="{{('Logout')}}"><i class="fa fa-fw fa-power-off"></i> Log Out</a>
+                            <a href="{{url('Logout')}}"><i class="fa fa-fw fa-power-off"></i> Log Out</a>
                         </li>
                     </ul>
                 </li>
@@ -125,17 +49,27 @@
             <div class="collapse navbar-collapse navbar-ex1-collapse">
                 <ul  class="nav navbar-nav side-nav" >
 
-                    <li class="active">
-                        <a href="{{('admin')}}"><i class="fa fa-fw fa-dashboard"></i> Dashboard</a>
-                    </li>
-                    @if(Auth::check() && (Auth::user()->isclient()))
-                    <li>
-                        <a href="{{('request')}}" class="dropdown dropdown-toggle" data-toggle="dropdown"><i class="fa fa-fw fa-arrows-v"></i> Meeting Request <i class="fa fa-fw fa-caret-down"></i></a>
 
+                    @if(Auth::check() && (Auth::user()->isclient()))
+                        <li class="active">
+                            <a href="{{('client')}} "><i class="fa fa-fw fa-dashboard"></i> Dashboard</a>
+                        </li>
+                    <li>
+                        <a href="" class="dropdown dropdown-toggle" data-toggle="dropdown"><i class="fa fa-fw fa-arrows-v"></i> Meeting Request <i class="fa fa-fw fa-caret-down"></i></a>
+                        <ul class="dropdown-menu dropdown-menu-right">
+                            <li>
+                                <a href="{{url('request')}}">My Meeting Request </a>
+                            </li>
+
+
+                        </ul>
                     </li>
                     @endif
 
                                   @if(Auth::check() && (Auth::user()->isAdmin()))
+                            <li class="active">
+                                <a href="{{('admin')}} "><i class="fa fa-fw fa-dashboard"></i> Dashboard</a>
+                            </li>
                         <li>
                             <a href="#" class="dropdown dropdown-toggle" data-toggle="dropdown"><i class="fa fa-fw fa-arrows-v"></i> Meetings <i class="fa fa-fw fa-caret-down"></i></a>
                             <ul class="dropdown-menu dropdown-menu-right">

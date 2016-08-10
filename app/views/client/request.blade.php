@@ -31,19 +31,19 @@
                                         <tbody>
 
 
-                                            @foreach($meetings as $meet)
-                                                @foreach($clients as $client)
-                                                @if($meet->client_id == $client->id)
+
+
+                                               @foreach($meetings as $meeting)
+                                                   @if ($meeting->client_id == $client->id)
                                                     <tr>
-                                            <td>{{$meet->meeting_description}} </td>
+                                            <td>{{$meeting->meeting_description}} </td>
 
 
-                                            <td><a href="{{url('accept/{id}'.$meet->id)}}" value="true" class="btn btn-success btn-sm">Accept </a></td>
-                                                   <td> <a href="{{url('decline/{id}'.$meet->id)}}" value="False" class="btn btn-danger btn-sm">Decline </a> </td>
+                                            <td><a href="{{url('accept/'.$meeting->id)}}" value="true" class="btn btn-success btn-sm">Accept </a></td>
+                                                   <td> <a href="{{url('decline/'.$meeting->id)}}" value="False" class="btn btn-danger btn-sm">Decline </a> </td>
                                                     </tr>
                                                 @endif
-                                                           @endforeach
-                                                        @endforeach
+                                               @endforeach
 
 
                                         </tbody>
