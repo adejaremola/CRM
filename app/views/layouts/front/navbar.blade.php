@@ -49,10 +49,11 @@
             <div class="collapse navbar-collapse navbar-ex1-collapse">
                 <ul  class="nav navbar-nav side-nav" >
 
-                    <li class="active">
-                        <a href="{{('admin')}}"><i class="fa fa-fw fa-dashboard"></i> Dashboard</a>
-                    </li>
+
                     @if(Auth::check() && (Auth::user()->isclient()))
+                        <li class="active">
+                            <a href="{{('client')}} "><i class="fa fa-fw fa-dashboard"></i> Dashboard</a>
+                        </li>
                     <li>
                         <a href="" class="dropdown dropdown-toggle" data-toggle="dropdown"><i class="fa fa-fw fa-arrows-v"></i> Meeting Request <i class="fa fa-fw fa-caret-down"></i></a>
                         <ul class="dropdown-menu dropdown-menu-right">
@@ -66,6 +67,9 @@
                     @endif
 
                                   @if(Auth::check() && (Auth::user()->isAdmin()))
+                            <li class="active">
+                                <a href="{{('admin')}} "><i class="fa fa-fw fa-dashboard"></i> Dashboard</a>
+                            </li>
                         <li>
                             <a href="#" class="dropdown dropdown-toggle" data-toggle="dropdown"><i class="fa fa-fw fa-arrows-v"></i> Meetings <i class="fa fa-fw fa-caret-down"></i></a>
                             <ul class="dropdown-menu dropdown-menu-right">
